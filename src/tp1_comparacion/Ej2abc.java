@@ -4,8 +4,8 @@ public class Ej2abc {
 
     public static void main(String[] args) {
         int[]a=generateRandomIntArray(4);
-        selectionInt(a);
-        for (int i : a) {
+        int[] b=bubbleInt(a);
+        for (int i : b) {
             System.out.println(i);
         }
 
@@ -13,7 +13,7 @@ public class Ej2abc {
     }
         /*El bubble sort consiste en comparar pares de elementos consecutivos en un array e intercambiarlos en caso de no estar ordenados.
         * Esta accion se repite hasta que todos los elementos esten ordenados*/
-    public static void bubbleInt(int[]array){
+    public static int[] bubbleInt(int[]array){
         for (int i = 0; i < array.length; i++) {
             for (int j = i+1; j <array.length ; j++) {
                 if (array[i]>array[j]) {
@@ -25,13 +25,14 @@ public class Ej2abc {
                 }
 
             }
+        return array;
         }
 
         /*El insertion sort consiste en partir desde el segundo elemento del arreglo, evaluarlo con el de la posicion anterior(de acuerdo al
         criterio de ordenamiento) y en caso de incumplir este criterio intercambiarlos.A diferencia del bubble sort, se intercambia cada elemento
         las veces que sea necesaria hasta que el criterio de ordenamiento se cumpla. */
 
-    public static void insertionInt(int[]array){
+    public static int[] insertionInt(int[]array){
         int aux;
         for (int i = 1; i < array.length; i++) {
             aux=array[i];
@@ -42,12 +43,13 @@ public class Ej2abc {
             }
             array[j+1]=aux;
         }
+        return array;
     }
 
         /*se define un indice de particion en la ultima posicion del arreglo. Se busca, desde la primera posicion, al elemento que deberia estar
         * en la ultima posicion de acuerdo al criterio elegido. Una vez se lo encuentra, se lo manda al final, y el indice de particion disminuye
         * una unidad, hasta alzanzar la primera posicion.*/
-    public static void selectionInt(int[]array){//{10,4,6,3,12}
+    public static int[] selectionInt(int[]array){//{10,4,6,3,12}
         for (int i = array.length - 1; i > 0; i--) {
             int maxIndex = 0;
             for (int j = 0; j < i; j++) {
@@ -59,6 +61,7 @@ public class Ej2abc {
             array[maxIndex]=array[i];
             array[i]=value;
         }
+        return array;
     }
 
     public static int[] generateRandomIntArray(int n){
