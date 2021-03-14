@@ -2,6 +2,10 @@ package tp1_comparacion;
 
 public class Ej2abc {
 
+    /*para poder utilizar los tests y asi medir los tiempos, nos vimos forzados a hacer qu elos metodos devuelvan un arreglo ordenado
+    en lugar de hacerlo void, y ordenar el existente.
+     */
+
 
         /*El bubble sort consiste en comparar pares de elementos consecutivos en un array e intercambiarlos en caso de no estar ordenados.
         * Esta accion se repite hasta que todos los elementos esten ordenados*/
