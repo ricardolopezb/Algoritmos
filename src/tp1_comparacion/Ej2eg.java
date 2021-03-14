@@ -3,7 +3,8 @@ package tp1_comparacion;
 public class Ej2eg {
 
     public static void main(String[] args) {
-        String[]b={"santiago","ricardo","alejo","camila"};
+        String[]b={"s","R","A","c"};
+        selectionRecursive(b);
         for(String i: b){
             System.out.println(i);
         }
@@ -50,18 +51,39 @@ public class Ej2eg {
         }
     }
 
-    /*public static <T> void selectionRecursive(Comparable<T>[]array,int index){
-        if(index>= array.length-1)
-            return;
-        int minindex=index;
-        for (int i = index+1; i < array.length ; i++) {
-            if(array[i].compareTo((T)array[minindex]) < 0){
-                minindex=index;
-            }
-        }
+    public static <T> void selectionRecursive(Comparable<T>[]array){
+        selectionRecursiveAux(array, array.length-1);
+    }
+
+    /*Auxiliary method that provides more parameters (index) so the recursive method of selection sort can be made*/
+    public static <T> void selectionRecursiveAux(Comparable<T>[]array,int index){
+
+        /*Cutting condition*/
+        if (index == -1) return;
+
+        /*Searches for the index of the maximum value in the interval*/
+        int maxIndex = getMaxIndex(array,index,0,0);
+
+        /*Switches the values*/
         Comparable temp=array[index];
-        array[index]=array[minindex];
-        array[minindex]=temp;
-        selectionRecursive(array,index+1);
-    }*/
+        array[index]=array[maxIndex];
+        array[maxIndex]=temp;
+        /*Calls himself again removing one unit in the index so the process can be done again in a smaller interval*/
+        selectionRecursiveAux(array,index-1);
+
+    }
+    /*Searches for the maximum index in the interval so than the max value can be modified by the value at the max index*/
+    public static <T> int getMaxIndex(Comparable<T>[] array, int index, int maxIndex, int recursiveIndex){
+
+        /*Cutting condition*/
+        if (recursiveIndex == index) return maxIndex;
+
+        /*Compares if the element at the recursive index +1 position is greater than the element at maxIndex, if it is true it switches them*/
+        if (array[recursiveIndex + 1].compareTo((T) array[maxIndex])>0){
+            maxIndex = recursiveIndex + 1;
+
+        }
+        /*Calls himself again adding one unit to the recursiveIndex so it can check the next value*/
+        return getMaxIndex(array,index,maxIndex,recursiveIndex+1);
+    }
 }
