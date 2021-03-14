@@ -2,15 +2,7 @@ package tp1_comparacion;
 
 public class Ej2abc {
 
-    public static void main(String[] args) {
-        int[]a=generateRandomIntArray(4);
-        int[] b=bubbleInt(a);
-        for (int i : b) {
-            System.out.println(i);
-        }
 
-
-    }
         /*El bubble sort consiste en comparar pares de elementos consecutivos en un array e intercambiarlos en caso de no estar ordenados.
         * Esta accion se repite hasta que todos los elementos esten ordenados*/
     public static int[] bubbleInt(int[]array){
@@ -49,7 +41,7 @@ public class Ej2abc {
         /*se define un indice de particion en la ultima posicion del arreglo. Se busca, desde la primera posicion, al elemento que deberia estar
         * en la ultima posicion de acuerdo al criterio elegido. Una vez se lo encuentra, se lo manda al final, y el indice de particion disminuye
         * una unidad, hasta alzanzar la primera posicion.*/
-    public static int[] selectionInt(int[]array){//{10,4,6,3,12}
+    public static int[] selectionInt(int[]array){
         for (int i = array.length - 1; i > 0; i--) {
             int maxIndex = 0;
             for (int j = 0; j < i; j++) {
@@ -63,7 +55,13 @@ public class Ej2abc {
         }
         return array;
     }
-
+        /*En la clase tester medimos los tiempos  que cada algoritmo tarda en ordenar un arreglo de n elementos. Los datos obtenidos tras relizar
+        * 10 repeticiones con el mismo tipo de sort,(primero con n=10, luego n=50, y finalmente n=100) y luego promediarlos, son los siguientes:
+        * bubble sort:4.0ms
+        * insertion sort:4.1ms
+        * slection sort:3.2ms
+        * El selection sort es el mas veloz de acuerdo a los datos obtenidos en nuestra experimentacion. El bubble sort y el insertion sort poseen
+        * una velocidad muy similar, sin embargo el bubble es un poco mas lento.*/
     public static int[] generateRandomIntArray(int n){
         int[] array=new int[n];
         for (int i = 0; i < n; i++) {
