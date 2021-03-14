@@ -6,8 +6,8 @@ import static org.junit.Assert.assertArrayEquals;
 
 public class tester {
 
-    int[]a={3,1,2};
-    int[]b={1,2,3};
+    int[]a=Ej2abc.generateRandomIntArray(10);
+    int[]b=Ej2abc.bubbleInt(a);
 
     @Test
     public void bubbleIntTest(){
