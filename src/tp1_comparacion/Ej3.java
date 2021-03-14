@@ -4,14 +4,14 @@ public class Ej3 {
 
     public static void main(String[] args) {
         String[] a = {"B", "F", "H", "T","U","Z"};
-        String[] b = {"A","D", "G","H", "R","S","V", "X", "Y"};
+        String[] b = {"A","D", "G", "R","S","V", "X", "Y"};
 
         // c = {A, B, D  F G H R S T U, V, X Y, Z}
 
         Object[]c = mergeArrays(a, b);
 
         for (Object s : c) {
-            System.out.println((String)s);
+            System.out.print((String)s);
 
         }
     }
