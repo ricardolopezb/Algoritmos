@@ -4,6 +4,7 @@ public class Ej2eg {
 
     public static void main(String[] args) {
         String[]b={"santiago","ricardo","alejo","camila"};
+       selectionRecursive(b,0);
         for(String i: b){
             System.out.println(i);
         }
@@ -50,18 +51,18 @@ public class Ej2eg {
         }
     }
 
-    /*public static <T> void selectionRecursive(Comparable<T>[]array,int index){
+    public static <T> void selectionRecursive(Comparable<T>[]array,int index){
         if(index>= array.length-1)
             return;
         int minindex=index;
         for (int i = index+1; i < array.length ; i++) {
             if(array[i].compareTo((T)array[minindex]) < 0){
-                minindex=index;
+                minindex=i;
             }
         }
         Comparable temp=array[index];
         array[index]=array[minindex];
         array[minindex]=temp;
         selectionRecursive(array,index+1);
-    }*/
+    }
 }
