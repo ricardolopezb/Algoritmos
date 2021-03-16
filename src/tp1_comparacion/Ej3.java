@@ -6,7 +6,7 @@ public class Ej3 {
         String[] a = {"B", "F", "H", "T","U","Z"};
         String[] b = {"A","D", "G", "R","S","V", "X", "Y"};
 
-        // c = {A, B, D  F G H R S T U, V, X Y, Z}
+        // c = {"A","B","D","F","G","H","R","S","T","U","V","X","Y","Z"};
 
         Object[]c = mergeArrays(a, b);
 
