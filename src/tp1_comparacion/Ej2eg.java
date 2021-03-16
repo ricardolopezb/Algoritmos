@@ -56,7 +56,7 @@ public class Ej2eg {
     }
 
     /*Auxiliary method that provides more parameters (index) so the recursive method of selection sort can be made*/
-    public static <T> void selectionRecursiveAux(Comparable<T>[]array,int index){
+    private static <T> void selectionRecursiveAux(Comparable<T>[]array,int index){
 
         /*Cutting condition*/
         if (index == -1) return;
@@ -73,7 +73,7 @@ public class Ej2eg {
 
     }
     /*Searches for the maximum index in the interval so than the max value can be modified by the value at the max index*/
-    public static <T> int getMaxIndex(Comparable<T>[] array, int index, int maxIndex, int recursiveIndex){
+    private static <T> int getMaxIndex(Comparable<T>[] array, int index, int maxIndex, int recursiveIndex){
 
         /*Cutting condition*/
         if (recursiveIndex == index) return maxIndex;
