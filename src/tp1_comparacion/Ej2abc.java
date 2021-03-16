@@ -2,7 +2,7 @@ package tp1_comparacion;
 
 public class Ej2abc {
 
-    /*para poder utilizar los tests y asi medir los tiempos, nos vimos forzados a hacer qu elos metodos devuelvan un arreglo ordenado
+    /*para poder utilizar los tests y asi medir los tiempos, nos vimos forzados a hacer que los metodos devuelvan un arreglo ordenado
     en lugar de hacerlo void, y ordenar el existente.
      */
 

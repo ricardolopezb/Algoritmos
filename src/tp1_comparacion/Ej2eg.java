@@ -3,9 +3,9 @@ package tp1_comparacion;
 public class Ej2eg {
 
     public static void main(String[] args) {
-        String[]b={"s","R","A","c"};
+        Integer[]b={8,10,5,9};
         selectionRecursive(b);
-        for(String i: b){
+        for(int i: b){
             System.out.println(i);
         }
     }
