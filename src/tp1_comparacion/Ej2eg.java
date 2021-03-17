@@ -72,6 +72,7 @@ public class Ej2eg {
         selectionRecursiveAux(array,index-1);
 
     }
+
     /*Searches for the maximum index in the interval so than the max value can be modified by the value at the max index*/
     private static <T> int getMaxIndex(Comparable<T>[] array, int index, int maxIndex, int recursiveIndex){
 

@@ -22,12 +22,11 @@ public class Ej2abc {
 
             }
         return array;
-        }
+    }
 
         /*El insertion sort consiste en partir desde el segundo elemento del arreglo, evaluarlo con el de la posicion anterior(de acuerdo al
         criterio de ordenamiento) y en caso de incumplir este criterio intercambiarlos.A diferencia del bubble sort, se intercambia cada elemento
         las veces que sea necesaria hasta que el criterio de ordenamiento se cumpla. */
-
     public static int[] insertionInt(int[]array){
         int aux;
         for (int i = 1; i < array.length; i++) {
@@ -59,6 +58,7 @@ public class Ej2abc {
         }
         return array;
     }
+
         /*En la clase tester medimos los tiempos  que cada algoritmo tarda en ordenar un arreglo de n elementos. Los datos obtenidos tras relizar
         * 10 repeticiones con el mismo tipo de sort,(primero con n=10, luego n=50, y finalmente n=100) y luego promediarlos, son los siguientes:
         * bubble sort:4.0ms
