@@ -30,10 +30,12 @@ public class miniBlast {
             totalMatchSum+=result;
         }
         System.out.println("\nTotal Matching Bases: "+totalMatchSum+"/"+referenceSeq.length);
+        int percentage = (int)calculateMatch(referenceSeq,querySeq);
+        System.out.println("Similarity percentage: "+percentage+"%");
     }
 
     //Given a coincidence, checks whether it is a k-mer or "chain", and if so, adds its length to a given array.
-    public static ArrayList<Integer> getLengths(char[] array1, char[] array2){
+    private static ArrayList<Integer> getLengths(char[] array1, char[] array2){
         ArrayList<Integer> lengths = new ArrayList<>();
 
         int streak = 0; //amount of consecutive matches.
@@ -56,7 +58,7 @@ public class miniBlast {
     }
 
     //calculates mathematical coincidence.
-    public static double calculateMatch(char[]referenceSeq,char[]querySeq){
+    private static double calculateMatch(char[]referenceSeq,char[]querySeq){
         double matches=0;
         for (int i = 0; i < referenceSeq.length; i++) {
             if (referenceSeq[i]==querySeq[i]){
