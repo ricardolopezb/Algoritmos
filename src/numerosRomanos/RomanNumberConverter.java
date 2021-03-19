@@ -6,6 +6,7 @@ import util.Scanner;
 
 
 public class RomanNumberConverter {
+
     public static void main(String[] args) {
 
         while(true) {
@@ -27,7 +28,6 @@ public class RomanNumberConverter {
         }
 
     }
-
 
     public static int getValueByString(String romanNumber){
         romanNumber = romanNumber.toUpperCase();
@@ -75,8 +75,6 @@ public class RomanNumberConverter {
         }
         return 0;
     }
-
-
 
 
 }

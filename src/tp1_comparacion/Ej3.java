@@ -17,55 +17,51 @@ public class Ej3 {
     }
 
 
-
-
     public static <T> T[] mergeArrays(Comparable<T>[] a, Comparable<T>[] b){
-        T[] c = (T[]) new Object[a.length + b.length]; //creamos el nuevo array C
+        T[] c = (T[]) new Object[a.length + b.length];
 
-
-        int i = 0; //indice de c
-        int tempK = 0; //una variable para guardar el valor de k, como un checkpoint, en caso de tener que saltar al siguiente indice de a, porque se reinicia el for de k y arrancaria en 0 otra vez.
-
-
+        int indexC = 0;
+        /* Variable to keep track of the value of k, given that it must be reset to its last value when it's for loop hits a break statement. */
+        int tempK = 0;
 
         for (int j = 0; j < a.length ; j++) {
-            if(i == c.length){
+            if(indexC == c.length){
                 break;
             }
 
             for (int k = tempK; k < b.length; k++) {
-                if(a[j].compareTo((T) b[k]) < 0){ //si deben estar repetidos, ponemos un = en el <0 y sacar el else if
-                    c[i] = (T) a[j];
+                if(a[j].compareTo((T) b[k]) < 0){
+                    c[indexC] = (T) a[j];
                     a[j] = null;
-                    i++;
+                    indexC++;
                     tempK = k;
-                    break; //para pasar al siguiente indice de a
+                    break; //To increment the index of a
                 }
                 else if(a[j].compareTo((T) b[k]) == 0){
-                    c[i] = (T) a[j];
+                    c[indexC] = (T) a[j];
                     b[k] = null;
                 }
                 else{
-                    c[i] = (T) b[k];
+                    c[indexC] = (T) b[k];
                     b[k] = null;
-                    i++;
+                    indexC++;
                 }
             }
         }
 
-        //Una vez que un array esta vacio, agrego los que quedan del otro en el array c. isEmpty() chequea si el array esta vacio.
+        /*Once one of the arrays is empty, the remaining elements in the other array are added to c*/
         if(isEmpty(a)){
             for (int j = 0; j < b.length ; j++) {
                 if(b[j] != null){
-                    c[i] = (T) b[j];
-                    i++;
+                    c[indexC] = (T) b[j];
+                    indexC++;
                 }
             }
         } else{
             for (int j = 0; j < a.length ; j++) {
                 if(a[j] != null){
-                    c[i] = (T) a[j];
-                    i++;
+                    c[indexC] = (T) a[j];
+                    indexC++;
                 }
             }
         }
