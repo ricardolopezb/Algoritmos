@@ -18,6 +18,12 @@ public class DoubleNode<T> {
         this.right = null;
     }
 
+    public DoubleNode(T data,DoubleNode<T> left,DoubleNode<T> right){
+        this.data=data;
+        this.right=right;
+        this.left=left;
+    }
+
     public T getData() {
         return data;
     }

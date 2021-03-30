@@ -1,17 +1,18 @@
 package ArbolBinario;
 
 
+import javax.swing.text.html.parser.TagElement;
 
 public class BinaryTree<T> {
 
 
-   private DoubleNode root;
+   private DoubleNode<T> root;
 
-   public BinaryTree() {
+    public BinaryTree() {
         this.root = null;
-   }
+    }
 
-   public BinaryTree(T element) {
+    public BinaryTree(T element) {
         this.root = new DoubleNode(element);
    }
 
@@ -19,8 +20,13 @@ public class BinaryTree<T> {
         this.root = doubleNode;
    }
 
+   public BinaryTree(T element, BinaryTree<T> leftTree, BinaryTree<T> rightTree){
+       this.root = new DoubleNode<T>(element, leftTree.root, rightTree.root);
+   }
+
+
    public boolean isEmpty() {
-        return root.equals(null);
+        return root == null;
    }
 
    public BinaryTree getLeft(){
@@ -31,7 +37,7 @@ public class BinaryTree<T> {
         return new BinaryTree(root.getRight());
    }
 
-   public DoubleNode getRoot() {
-        return root;
+   public T getRoot() {
+        return root.getData();
    }
 }

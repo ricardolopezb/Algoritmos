@@ -4,130 +4,221 @@ import java.util.ArrayList;
 
 public class BinaryTreeApi<T>  {
 
-    /** LISTO */
+    /**-------------------------------------- TREE INFO -------------------------------------------------*/
+
     public int weight(BinaryTree<T> tree) {
         return size(tree);
     }
-    /** LISTO */
+
+
     public int size(BinaryTree<T> tree) {
         if (tree.isEmpty()) return 0;
         return 1 + size(tree.getLeft()) + size(tree.getRight());
     }
-    //pensarlo para sacar duda
-    public int height(BinaryTree<T> tree){
-        if (tree.isEmpty() || (tree.getLeft().isEmpty() && tree.getRight().isEmpty())) return 0;
-        if (tree.getLeft().isEmpty() && !tree.getRight().isEmpty()) return 1+ height(tree.getRight());
-        if (!tree.getLeft().isEmpty() && tree.getRight().isEmpty()) return 1+ height(tree.getLeft());
-        return 1+ height(tree.getLeft()) + height(tree.getRight());
+
+
+    public int leavesNumber(BinaryTree<T> tree){
+        if (tree.isEmpty()) return 0;
+        if (tree.getLeft().isEmpty() && tree.getRight().isEmpty()) return 1;
+        return leavesNumber(tree.getLeft()) + leavesNumber(tree.getRight());
     }
-    /** LISTO */
+
+
+    public int occurrences(BinaryTree<T> tree, T element) {
+        if (tree.isEmpty()) return 0;
+        if (tree.getRoot().equals(element)) return 1 + occurrences(tree.getLeft(),element) + occurrences(tree.getRight(), element);
+        else return occurrences(tree.getLeft(), element) + occurrences(tree.getRight(), element);
+    }
+
+
+    public int elementsPerLevel(BinaryTree<T> tree, int level){
+        if (tree.isEmpty()) return 0;
+        if (level == 0) return 1;
+        return elementsPerLevel(tree.getLeft(),level-1) + elementsPerLevel(tree.getRight(),level-1);
+    }
+
+
+    public int height(BinaryTree<T> tree){
+        if (tree.isEmpty()) return -1;
+        return 1 + Math.max(height(tree.getLeft()) , height(tree.getRight()));
+    }
+
+
     public int fullNodes(BinaryTree<T> tree) {
         if (tree.isEmpty()) return 0;
         if (!tree.getLeft().isEmpty() && !tree.getRight().isEmpty()) return 1 + fullNodes(tree.getLeft()) + fullNodes(tree.getRight());
         return fullNodes(tree.getLeft()) + fullNodes(tree.getRight());
     }
-    /** LISTO */
-    public int completeNodes(BinaryTree<T> tree) {
-        if (tree.isEmpty()) return 0;
-        if (tree.getLeft().isEmpty()) return completeNodes(tree.getRight());
-        if (tree.getRight().isEmpty()) return completeNodes(tree.getLeft());
-        return 1 + completeNodes(tree.getLeft()) + completeNodes(tree.getRight());
+
+
+    public boolean completeTree(BinaryTree<T> tree) {
+     return false;
     }
-    /*checkear el isfull, creo que esta pensar que pasa si tiene uno lleno y el otro no, pero si no pasa todas las condicioneses pq estan llenos los nodos id y raiz**/
+
+
+    /**-------------------------------------------- OPERATIONS ------------------------------------------------*/
+
+
+    public int sum(BinaryTree<Integer> tree){
+        if (tree.isEmpty()) return 0;
+        return (Integer) tree.getRoot() + sum(tree.getLeft()) + sum(tree.getRight());
+    }
+
+    /**no funca*/
+    public int sumx3(BinaryTree<Integer> tree){
+        if (tree.isEmpty()) return 0;
+        if (tree.getRoot() % 3 == 0) return tree.getRoot() + sum(tree.getLeft()) + sum(tree.getRight());
+        return sumx3(tree.getLeft()) + sumx3(tree.getRight());
+    }
+
+
+    public boolean equals(BinaryTree<T> a, BinaryTree<T> b) {
+        if (!a.getRoot().equals(b.getRoot()))return false;
+        if (a.getRoot().equals(b.getRoot()) && a.getRight().isEmpty() && a.getLeft().isEmpty() && b.getRight().isEmpty() && b.getLeft().isEmpty()) return true;
+        return true && equals(a.getLeft(), b.getLeft()) && equals(a.getRight(), b.getRight());
+    }
+
+    /**MHMMMMMMMMMMMMMMMMMMMMMMMMMHMMMMMMMMMMMM*/
+    public boolean areIsomorphics(BinaryTree<T> a, BinaryTree<T> b) {
+        if (a.isEmpty() && b.isEmpty()) return true;
+        if (a.getLeft().isEmpty() && b.getLeft().isEmpty()) return true && areIsomorphics(a.getRight(),b.getRight());
+        if (a.getRight().isEmpty() && b.getRight().isEmpty()) return true && areIsomorphics(a.getLeft(),b.getLeft());
+        if (!a.getRight().isEmpty() && !b.getRight().isEmpty() && !a.getLeft().isEmpty() && !b.getLeft().isEmpty()) return true && areIsomorphics(a.getRight(),b.getRight()) && areIsomorphics(a.getLeft(),b.getLeft());
+        return false;
+    }
+
+
+    public boolean similar(BinaryTree<T> a, BinaryTree<T> b){
+        ArrayList<T> aElements = new ArrayList<>();
+        ArrayList<T> bElements = new ArrayList<>();
+        inorder(a,aElements);
+        inorder(b,bElements);
+        return aElements.containsAll(bElements) && bElements.containsAll(aElements);
+    }
+
+    /**pensar*/
     public boolean isFull(BinaryTree<T> tree) {
+     return size(tree) == Math.pow(2,height(tree));
+    }
+
+
+    public boolean isComplete(BinaryTree<T> tree) {
         if (tree.isEmpty()) return false;
         if ((tree.getLeft().isEmpty() && !tree.getRight().isEmpty()) || (!tree.getLeft().isEmpty() && tree.getRight().isEmpty())) return false;
         if (!tree.isEmpty() && tree.getLeft().isEmpty() && tree.getRight().isEmpty()) return true;
-        return true && isFull(tree.getLeft()) && isFull(tree.getRight());
+        return true && isComplete(tree.getLeft()) && isComplete(tree.getRight());
     }
-    /*puede ser lo mismo que is full, checkear*/
-    public boolean isComplete(BinaryTree<T> tree) {
-        return isFull(tree);
+
+    /**iwiowouwu*/
+    public boolean isStable(BinaryTree<Integer> tree) {
+        if (tree.isEmpty()) return true;
+        if (tree.getRight().isEmpty() && tree.getLeft().isEmpty()) return true;
+        if (((int) tree.getRight().getRoot() > (int) tree.getRoot()) || ((int) tree.getLeft().getRoot() > (int) tree.getRoot())) return false;
+        return isStable(tree.getRight()) && isStable(tree.getLeft());
     }
-    /*pensar pq pueden tener el mismo size sin tener nodos completos, pensar todos los casos posibles del isfull*/
-    public boolean isStable(BinaryTree<T> tree) {
-        return isFull(tree.getLeft()) && isFull(tree.getRight());
+
+
+    public boolean occurresIn(BinaryTree<T> a, BinaryTree<T> b) {
+        if (a.isEmpty() || b.isEmpty()) return false;
+        if (a.equals(b)) return true;
+        if (size(a)>size(b)) return occurresIn(a.getLeft(),b) || occurresIn(a.getRight(),b);
+        else return occurresIn(b.getLeft(),a) || occurresIn(b.getRight(),a);
     }
-    /** LISTO */
-    public int ocurrences(BinaryTree<T> tree, T element) {
-        if (tree.isEmpty()) return 0;
-        if (tree.getRoot().equals(element)) return 1 + ocurrences(tree.getLeft(),element) + ocurrences(tree.getRight(), element);
-        else return ocurrences(tree.getLeft(), element) + ocurrences(tree.getRight(), element);
+
+
+    public void showFrontier(BinaryTree<T> tree) {
+        if (tree.isEmpty()) return;
+        if (tree.getLeft().isEmpty() && tree.getRight().isEmpty()) System.out.println(tree.getRoot());
+        showFrontier(tree.getLeft());
+        showFrontier(tree.getRight());
     }
-    /** LISTO */
-    public boolean happensTree(BinaryTree<T> a, BinaryTree<T> b) {
-        if(a.isEmpty() || b.isEmpty()) return false;
-        if (areEquals(a,b)) return true;
-        return areEquals(a.getLeft(),b) || areEquals(a.getRight(),b);
+
+    public ArrayList<T> frontier(BinaryTree<T> tree){
+        ArrayList<T> toReturn = new ArrayList<>();
+        frontierAuxiliar(tree,toReturn);
+        return toReturn;
     }
-    /** LISTO */
+
+    public void frontierAuxiliar(BinaryTree<T> tree, ArrayList<T> frontier) {
+        if (!tree.isEmpty()){
+        if (tree.getLeft().isEmpty() && tree.getRight().isEmpty()) frontier.add((T) tree.getRoot());
+        frontierAuxiliar(tree.getLeft(),frontier);
+        frontierAuxiliar(tree.getRight(),frontier);
+        }
+    }
+
+
+
+    /**--------------------------------------------- ORDENAR --------------------------------------------------*/
+
     public void preorder(BinaryTree<T> tree){
         if (!tree.isEmpty()){
-            System.out.println(tree.getRoot().getData());
+            System.out.println(tree.getRoot());
             preorder(tree.getLeft());
             preorder(tree.getRight());
         }
     }
-    /** LISTO */
+
+
     public void preorder(BinaryTree<T> tree, ArrayList<T> traversal){
         if (!tree.isEmpty()){
-            traversal.add((T) tree.getRoot().getData());
+            traversal.add((T) tree.getRoot());
             preorder(tree.getLeft(),traversal);
             preorder(tree.getRight(),traversal);
         }
     }
-    /** LISTO */
+
+
     public void inorder(BinaryTree<T> tree){
         if(!tree.isEmpty()){
             inorder(tree.getLeft());
-            System.out.println(tree.getRoot().getData());
+            System.out.println(tree.getRoot());
             inorder(tree.getRight());
         }
     }
-    /** LISTO */
+
+
     public void inorder(BinaryTree<T> tree, ArrayList<T> traversal){
         if (!tree.isEmpty()){
             inorder(tree.getLeft(), traversal);
-            traversal.add((T) tree.getRoot().getData());
+            traversal.add((T) tree.getRoot());
             inorder(tree.getRight(),traversal);
         }
     }
-    /** LISTO */
+
+
     public void postorder(BinaryTree<T> tree){
         if (!tree.isEmpty()){
             postorder(tree.getLeft());
             postorder(tree.getRight());
-            System.out.println(tree.getRoot().getData());
+            System.out.println(tree.getRoot());
         }
     }
-    /** LISTO */
+
+
     public void postorder(BinaryTree<T> tree, ArrayList<T> traversal){
         if (!tree.isEmpty()){
         postorder(tree.getLeft(),traversal);
         postorder(tree.getRight(),traversal);
-        traversal.add((T) tree.getRoot().getData());
+        traversal.add((T) tree.getRoot());
         }
     }
 
-    public void perLevel(BinaryTree<T> tree){}
+    /**revisar*/
+    public void perLevel(BinaryTree<T> tree){
+        if (!tree.isEmpty()){
+            System.out.println(tree.getRoot());
+            System.out.println(tree.getLeft().getRoot());
+            System.out.println(tree.getRight().getRoot());
+            perLevel(tree.getLeft().getLeft());
+            perLevel(tree.getLeft().getRight());
+            perLevel(tree.getRight().getLeft());
+            perLevel(tree.getRight().getRight());
+
+        }
+
+    }
+
 
     public void perLevel(BinaryTree<T> tree, ArrayList<T> traversal){}
-    /**Checkear*/
-    public boolean areEquals(BinaryTree<T> a, BinaryTree<T> b) {
-        if (!a.getRoot().equals(b.getRoot()))return false;
-        if (a.getRoot().equals(b.getRoot()) && a.getRight().isEmpty() && a.getLeft().isEmpty() && b.getRight().isEmpty() && b.getLeft().isEmpty()) return true;
-        return true && areEquals(a.getLeft(), b.getLeft()) && areEquals(a.getRight(), b.getRight());
-    }
-
-    public boolean areIsomorphics(BinaryTree<T> a, BinaryTree<T> b) {
-        return false;
-    }
-
-    public void showFrontier(BinaryTree<T> tree) {
-
-    }
-
-    public ArrayList<T> frontier(BinaryTree<T> tree, T element) {
-        return null;
-    }
 }
