@@ -61,13 +61,12 @@ public class BinaryTreeApi<T>  {
 
     public int sum(BinaryTree<Integer> tree){
         if (tree.isEmpty()) return 0;
-        return (Integer) tree.getRoot() + sum(tree.getLeft()) + sum(tree.getRight());
+        return tree.getRoot() + sum(tree.getLeft()) + sum(tree.getRight());
     }
 
-    /**no funca*/
     public int sumx3(BinaryTree<Integer> tree){
         if (tree.isEmpty()) return 0;
-        if (tree.getRoot() % 3 == 0) return tree.getRoot() + sum(tree.getLeft()) + sum(tree.getRight());
+        if (tree.getRoot() % 3 == 0) return tree.getRoot() + sumx3(tree.getLeft()) + sumx3(tree.getRight());
         return sumx3(tree.getLeft()) + sumx3(tree.getRight());
     }
 
