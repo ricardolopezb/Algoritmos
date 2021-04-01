@@ -70,14 +70,11 @@ public class BinaryTreeApi<T>  {
         return sumx3(tree.getLeft()) + sumx3(tree.getRight());
     }
 
-
+    /**Arreglar*/
     public boolean equals(BinaryTree<T> a, BinaryTree<T> b) {
-        if (!a.getRoot().equals(b.getRoot()))return false;
-        if (a.getRoot().equals(b.getRoot()) && a.getRight().isEmpty() && a.getLeft().isEmpty() && b.getRight().isEmpty() && b.getLeft().isEmpty()) return true;
-        return true && equals(a.getLeft(), b.getLeft()) && equals(a.getRight(), b.getRight());
+       return true;
     }
 
-    /**MHMMMMMMMMMMMMMMMMMMMMMMMMMHMMMMMMMMMMMM*/
     public boolean areIsomorphics(BinaryTree<T> a, BinaryTree<T> b) {
         if (a.isEmpty() && b.isEmpty()) return true;
         if (a.getLeft().isEmpty() && b.getLeft().isEmpty()) return true && areIsomorphics(a.getRight(),b.getRight());
@@ -95,9 +92,9 @@ public class BinaryTreeApi<T>  {
         return aElements.containsAll(bElements) && bElements.containsAll(aElements);
     }
 
-    /**pensar*/
+    /**Sumatoria de 2^i*/
     public boolean isFull(BinaryTree<T> tree) {
-     return size(tree) == Math.pow(2,height(tree));
+     return size(tree) == Math.pow(2,height(tree)+1)-1;
     }
 
 
@@ -108,7 +105,6 @@ public class BinaryTreeApi<T>  {
         return true && isComplete(tree.getLeft()) && isComplete(tree.getRight());
     }
 
-    /**iwiowouwu*/
     public boolean isStable(BinaryTree<Integer> tree) {
         if (tree.isEmpty()) return true;
         if (tree.getRight().isEmpty() && tree.getLeft().isEmpty()) return true;
@@ -116,7 +112,7 @@ public class BinaryTreeApi<T>  {
         return isStable(tree.getRight()) && isStable(tree.getLeft());
     }
 
-
+    /**Arreglar*/
     public boolean occurresIn(BinaryTree<T> a, BinaryTree<T> b) {
         if (a.isEmpty() || b.isEmpty()) return false;
         if (a.equals(b)) return true;
@@ -161,7 +157,7 @@ public class BinaryTreeApi<T>  {
 
     public void preorder(BinaryTree<T> tree, ArrayList<T> traversal){
         if (!tree.isEmpty()){
-            traversal.add((T) tree.getRoot());
+            traversal.add((tree.getRoot()));
             preorder(tree.getLeft(),traversal);
             preorder(tree.getRight(),traversal);
         }
@@ -199,7 +195,7 @@ public class BinaryTreeApi<T>  {
         if (!tree.isEmpty()){
         postorder(tree.getLeft(),traversal);
         postorder(tree.getRight(),traversal);
-        traversal.add((T) tree.getRoot());
+        traversal.add(tree.getRoot());
         }
     }
 
