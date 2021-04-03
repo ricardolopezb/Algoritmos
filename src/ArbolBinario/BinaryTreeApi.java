@@ -199,7 +199,7 @@ public class BinaryTreeApi<T>  {
         }
     }
 
-    /**revisar*/
+    /**revisar y hacer los dos de abajo xdn't*/
     public void perLevel(BinaryTree<T> tree){
         if (!tree.isEmpty()){
             System.out.println(tree.getRoot());
