@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Caballo {
 
     private Tile posicion;
-    //ultima posicion?
+
 
     public Caballo() {
         this.posicion = new Tile();
@@ -31,19 +31,27 @@ public class Caballo {
         nextTiles.add(new Tile((char)(xPos-1), yPos+2));
         nextTiles.add(new Tile((char)(xPos-1), yPos-2));
 
-        removeImpossibles(nextTiles);
 
-        return nextTiles;
+
+        return removeImpossibles(nextTiles);
 
 
     }
 
-    private void removeImpossibles(ArrayList<Tile> nextTiles) {
-        for (Tile pos: nextTiles) {
-            if(pos.x > 'H' || pos.x < 'A' || pos.y > 8 || pos.y < 1){
-                nextTiles.remove(pos);
+    private ArrayList<Tile> removeImpossibles(ArrayList<Tile> nextTiles) {
+        for (int i = 0; i<nextTiles.size();i++) {
+            if(nextTiles.get(i).x > 'H' || nextTiles.get(i).x < 'A' || nextTiles.get(i).y > 8 || nextTiles.get(i).y < 1){
+                nextTiles.set(i, null);
             }
         }
+
+        ArrayList<Tile> temp = new ArrayList<Tile>();
+        for (Tile tile: nextTiles) {
+            if(tile != null){
+                temp.add(tile);
+            }
+        }
+        return temp;
     }
 
 

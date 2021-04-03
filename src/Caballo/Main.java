@@ -7,8 +7,22 @@ public class Main {
     public static void main(String[] args) {
 
 
+        movCaballo = new MovimientoDeCaballo(3, new Tile('A', 1));
+        movCaballo.fillInitialStacks();
+        movCaballo.getPaths();
+
+
+        /*Caballo cab = new Caballo(new Tile('B', 3));
+        System.out.println(cab.getNextTiles());
+
+
+
+
+         */
 
         /*
+
+
 
         while(true){
 
@@ -21,11 +35,11 @@ public class Main {
             //SALIR
             switch (choice){
                 case 1:
-                    movCaballo.getMovimientosPosibles()
+                    movCaballo.mover()
                     break;
 
                 case 2:
-                    movCaballo.displayStacks(); //printear el contenido de cada pila
+                    movCaballo.showStacks(); //printear el contenido de cada pila
                     break;
 
 

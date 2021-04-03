@@ -15,6 +15,10 @@ public class Tile {
         this.y =1;
     }
 
+    public String toString(){
+        return String.valueOf(x)+String.valueOf(y);
+    }
+
 
 
 
