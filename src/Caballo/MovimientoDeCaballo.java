@@ -8,18 +8,19 @@ import java.util.Stack;
 public class MovimientoDeCaballo {
 
     private final char[] letras = {'A','B','C','D','E','F','G','H'};
-
+    private Caballo caballo;
     private int cantidadDeMovimientos;
     DynamicStack<Tile>[] stacks;
 
-    public MovimientoDeCaballo(int n) {
+    public MovimientoDeCaballo(int saltos, Tile posInicial) {
 
-        this.cantidadDeMovimientos = n;
-        this.stacks = new DynamicStack[n];
+        this.cantidadDeMovimientos = saltos;
+        this.stacks = new DynamicStack[saltos];
+        this.caballo = new Caballo(posInicial);
 
     }
 
-    public void proximoMovimiento(Caballo caballo){
+    public void mover(int n){
 
     }
 
@@ -28,4 +29,7 @@ public class MovimientoDeCaballo {
     }
 
 
+    //printea el contenido de cada pila.
+    public void displayStacks() {
+    }
 }

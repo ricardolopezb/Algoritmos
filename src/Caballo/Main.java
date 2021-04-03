@@ -3,14 +3,16 @@ package Caballo;
 import util.Scanner;
 
 public class Main {
-
+    static MovimientoDeCaballo movCaballo;
     public static void main(String[] args) {
 
-        int n;//hacerlo scanner
 
 
+        /*
 
         while(true){
+
+            //cuando se pregunte la cant de saltos, se inicializa movCaballo.
 
            int choice = Scanner.getInt("negachivo");
 
@@ -19,16 +21,21 @@ public class Main {
             //SALIR
             switch (choice){
                 case 1:
+                    movCaballo.getMovimientosPosibles()
+                    break;
 
-                    break;
                 case 2:
+                    movCaballo.displayStacks(); //printear el contenido de cada pila
                     break;
-                case 3:
+
+
+
+                    case 3:
                     System.exit(0);
                     break;
             }
 
-        }
+        }*/
 
     }
 

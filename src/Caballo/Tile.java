@@ -2,16 +2,21 @@ package Caballo;
 
 public class Tile {
 
-    int x;
+    char x;
     int y;
 
-    public Tile(int x, int y) {
+    public Tile(char x, int y) {
         this.x = x;
         this.y = y;
     }
 
     public Tile(){
-        this.x = 0;
-        this.y =0;
+        this.x = 'A';
+        this.y =1;
     }
+
+
+
+
+
 }
