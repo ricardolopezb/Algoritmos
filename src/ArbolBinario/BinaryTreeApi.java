@@ -70,9 +70,11 @@ public class BinaryTreeApi<T>  {
         return sumx3(tree.getLeft()) + sumx3(tree.getRight());
     }
 
-    /**Arreglar*/
     public boolean equals(BinaryTree<T> a, BinaryTree<T> b) {
-       return true;
+       if (a.isEmpty() && b.isEmpty()) return true;
+       if (!a.isEmpty() && b.isEmpty() || (a.isEmpty() && !b.isEmpty())) return false;
+       if (!a.getRoot().equals(b.getRoot())) return false;
+       return equals(a.getLeft(),b.getLeft()) && equals(a.getRight(),b.getRight());
     }
 
     public boolean areIsomorphics(BinaryTree<T> a, BinaryTree<T> b) {
@@ -112,14 +114,17 @@ public class BinaryTreeApi<T>  {
         return isStable(tree.getRight()) && isStable(tree.getLeft());
     }
 
-    /**Arreglar*/
-    public boolean occurresIn(BinaryTree<T> a, BinaryTree<T> b) {
-        if (a.isEmpty() || b.isEmpty()) return false;
-        if (a.equals(b)) return true;
-        if (size(a)>size(b)) return occurresIn(a.getLeft(),b) || occurresIn(a.getRight(),b);
-        else return occurresIn(b.getLeft(),a) || occurresIn(b.getRight(),a);
-    }
+    /**     B OCURRE EN A        report ricky */
+    public boolean occurresIn(BinaryTree<T> grande, BinaryTree<T> chiquito) { //b ocurre en a (ya basta ricky)
+    /*if (size(chiquito)>size(grande)) return false;
+    if (equals(grande,chiquito)) return true;
+    return occurresIn(grande.getLeft(), chiquito) || occurresIn(grande.getRight(), chiquito);
 
+    if (chiquito.isEmpty()) return true;
+    if (occurrences(chiquito,grande.getRoot()) == 1) return occurresIn(chiquito.getLeft(),grande) && occurresIn(chiquito.getRight(), grande);
+    else return false;*/
+        return grande.equals(chiquito);
+    }
 
     public void showFrontier(BinaryTree<T> tree) {
         if (tree.isEmpty()) return;
