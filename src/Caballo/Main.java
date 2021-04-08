@@ -9,6 +9,8 @@ public class Main {
 
         movCaballo = new MovimientoDeCaballo(3, new Tile('A', 1));
         movCaballo.fillInitialStacks();
+        movCaballo.showStacks();
+        System.out.println("\n");
         movCaballo.getPaths();
 
 

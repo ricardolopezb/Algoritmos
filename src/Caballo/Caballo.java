@@ -37,7 +37,7 @@ public class Caballo {
 
 
     }
-
+    // todo cambiar arraylist por arrays
     private ArrayList<Tile> removeImpossibles(ArrayList<Tile> nextTiles) {
         for (int i = 0; i<nextTiles.size();i++) {
             if(nextTiles.get(i).x > 'H' || nextTiles.get(i).x < 'A' || nextTiles.get(i).y > 8 || nextTiles.get(i).y < 1){

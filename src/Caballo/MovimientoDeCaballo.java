@@ -26,7 +26,6 @@ public class MovimientoDeCaballo {
 
     }
 
-
     //todo arreglar formato
     public void showStacks() {
         DynamicStack<Tile>[] temp = stacks;
@@ -46,6 +45,7 @@ public class MovimientoDeCaballo {
         }
     }
 
+    /*
     //todo arreglarlo
     public void backtrack(int index) {
         if (index > saltos - 1) return;
@@ -87,7 +87,7 @@ public class MovimientoDeCaballo {
             caballo.setPosicion(stacks[index].peek());
             fillStacks(index + 1);
         }
-    }
+    }*/
 
     public int getCantidadDeMovimientos() {
         return this.saltos;
@@ -96,11 +96,11 @@ public class MovimientoDeCaballo {
     public void addPositionsToStack(Tile tile, int stackPos) {
         Caballo caballo = new Caballo(tile);
         ArrayList<Tile> possibleTiles = caballo.getNextTiles();
-        for (Tile droga : possibleTiles) {
-            stacks[stackPos].stack(droga);
+        for (Tile t : possibleTiles) {
+            stacks[stackPos].stack(t);
         }
     }
-    public void getPaths(){
+    /*public void getPaths(){
         getPaths(saltos-1);
     }
 
@@ -132,5 +132,5 @@ public class MovimientoDeCaballo {
         getPaths(index);
 
 
-    }
+    }*/
 }
