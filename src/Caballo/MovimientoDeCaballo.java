@@ -45,49 +45,7 @@ public class MovimientoDeCaballo {
         }
     }
 
-    /*
-    //todo arreglarlo
-    public void backtrack(int index) {
-        if (index > saltos - 1) return;
-        String path = initialPos.toString();
-        for (int i = 0; i < stacks.length - index; i++) {
-            path = path + " - " + stacks[i].peek().toString();
-        }
-
-        while (!stacks[stacks.length - index].isEmpty()) {
-            System.out.println(path + " - " + stacks[stacks.length - index].peek().toString());
-            try {
-                stacks[stacks.length - index].pop();
-            } catch (IsEmptyException e) {
-                e.getMessage();
-            }
-        }
-        try {
-            stacks[stacks.length - index - 1].pop();
-        } catch (IsEmptyException e) {
-            e.getMessage();
-        }
-
-        fillStacks(saltos - index);
-        backtrack(index + 1);
-
-    }
-
-    public void fillInitialStacks() {
-        fillStacks(0);
-    }
-
-    public void fillStacks(int index) {
-        if (index == saltos) return;
-        else {
-            ArrayList<Tile> posPosibles = caballo.getNextTiles();
-            for (Tile tile : posPosibles) {
-                stacks[index].stack(tile);
-            }
-            caballo.setPosicion(stacks[index].peek());
-            fillStacks(index + 1);
-        }
-    }*/
+  
 
     public int getCantidadDeMovimientos() {
         return this.saltos;
@@ -100,37 +58,5 @@ public class MovimientoDeCaballo {
             stacks[stackPos].stack(t);
         }
     }
-    /*public void getPaths(){
-        getPaths(saltos-1);
-    }
 
-    public void getPaths(int index) {
-
-
-        String path = initialPos.toString();
-        for (int i = 0; i < stacks.length - 1; i++) {
-            path = path + " - " + stacks[i].peek().toString();
-        }
-
-        while (!stacks[stacks.length - 1].isEmpty()) {
-            System.out.println(path + " - " + stacks[stacks.length - 1].peek().toString());
-            try {
-                stacks[stacks.length - 1].pop();
-            } catch (IsEmptyException e) {
-                e.getMessage();
-            }
-
-        }
-        try {
-            stacks[stacks.length - index].pop();
-        } catch (IsEmptyException e) {
-            e.getMessage();
-        }
-        if (stacks[stacks.length - index].peek() == null) return;
-        addPositionsToStack(stacks[stacks.length - index].peek(), stacks.length - 1);
-        index++;
-        getPaths(index);
-
-
-    }*/
 }
