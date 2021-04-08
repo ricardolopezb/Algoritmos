@@ -8,10 +8,11 @@ public class Main {
 
 
         movCaballo = new MovimientoDeCaballo(3, new Tile('A', 1));
-        movCaballo.fillInitialStacks();
-        movCaballo.showStacks();
-        System.out.println("\n");
-        movCaballo.getPaths();
+        movCaballo.addPositionsToStack(1);
+
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n-----------------------------------");
+
+        movCaballo.addPositionsToStack(2);
 
 
         /*Caballo cab = new Caballo(new Tile('B', 3));

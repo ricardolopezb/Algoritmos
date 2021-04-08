@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 public class MovimientoDeCaballo {
 
-
     private Caballo caballo;
     private int saltos;
     DynamicStack<Tile>[] stacks;
@@ -17,18 +16,20 @@ public class MovimientoDeCaballo {
 
     public MovimientoDeCaballo(int saltos, Tile posInicial) {
         this.saltos = saltos;
-        this.stacks = new DynamicStack[saltos];
-        for (int i = 0; i < saltos; i++) {
+        this.stacks = new DynamicStack[saltos+1];//1 posicion mas de salto por el teorema de la mano derecha de alejo
+        for (int i = 0; i <= saltos; i++) {
             this.stacks[i] = new DynamicStack<Tile>();
         }
-        this.caballo = new Caballo(posInicial);
+        stacks[0].stack(posInicial);
+        caballo = new Caballo(posInicial);
         this.initialPos = posInicial;
 
     }
-
-    //todo arreglar formato
+    /*
+    //todo ARRGELAR
     public void showStacks() {
-        DynamicStack<Tile>[] temp = stacks;
+        DynamicStack<Tile>[] temp = new DynamicStack[stacks.length];
+
 
         for (DynamicStack stack : temp) {
             System.out.println("Stack\n");
@@ -43,20 +44,37 @@ public class MovimientoDeCaballo {
             }
             System.out.println("\n");
         }
+    }*/
+
+    public void showPath(int index){
+
+
+
     }
 
-  
+    public void addPositionsToStack(int stackPos) {
 
-    public int getCantidadDeMovimientos() {
-        return this.saltos;
-    }
+        try {
+            for (int i = stackPos; i <= saltos; i++) {
+                stacks[i].empty();
+            }
+        }catch (IsEmptyException e){
+            System.out.println(e.getMessage());
+        }
 
-    public void addPositionsToStack(Tile tile, int stackPos) {
-        Caballo caballo = new Caballo(tile);
-        ArrayList<Tile> possibleTiles = caballo.getNextTiles();
-        for (Tile t : possibleTiles) {
-            stacks[stackPos].stack(t);
+
+
+        for (int i = stackPos; i <= saltos; i++) {
+
+            Caballo caballoAux = new Caballo(stacks[i-1].peek());
+            Tile[] tilesAux = caballoAux.getNextTiles();
+
+            for (int j = 0; j < tilesAux.length; j++) {
+                        stacks[i].stack(tilesAux[j]);
+            }
         }
     }
+
+
 
 }
