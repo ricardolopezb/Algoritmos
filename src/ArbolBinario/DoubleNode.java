@@ -37,6 +37,6 @@ public class DoubleNode<T> {
     }
 
     public boolean isEmpty() {
-        return data.equals(null);
+        return data == null;
     }
 }

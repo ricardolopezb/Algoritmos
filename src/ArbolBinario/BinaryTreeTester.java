@@ -25,6 +25,15 @@ public class BinaryTreeTester {
 
     static BinaryTree<Integer> binaryTreeManco = new BinaryTree<>(1,left,new BinaryTree<>(22));
 
+    static BinaryTree<Integer> binaryTreeFullPeroNoEsElFullPostaXdDeDedoCorteFullPeroNoTieneElMismoCodigoEnLaMaquina = new BinaryTree<>(1,left,right);
+
+    static BinaryTree<Integer> arbolvacio = new BinaryTree<>();
+    static BinaryTree<Integer> arbolvacio2 = new BinaryTree<>();
+    static BinaryTree<Integer> arbolInVacio = new BinaryTree<>(2);
+    static BinaryTree<Integer> arbolInVacio2 = new BinaryTree<>(2);
+    static BinaryTree<Integer> arbolInVacio3 = new BinaryTree<>(3);
+
+
 
     @Test
     public void sizeTest(){
@@ -74,12 +83,17 @@ public class BinaryTreeTester {
         Assert.assertEquals(9,binaryTreeApi.sumx3(binaryTreeInFull));
     }
 
-   /* @Test
+   @Test
     public void equalsTest(){
         Assert.assertEquals(false, binaryTreeApi.equals(binaryTreeFull,binaryTreeInFull));
         Assert.assertEquals(true, binaryTreeApi.equals(binaryTreeFull,binaryTreeFull));
         Assert.assertEquals(true, binaryTreeApi.equals(binaryTreeInFull,binaryTreeInFull));
-    }*/
+        Assert.assertEquals(true, binaryTreeApi.equals(binaryTreeFull,binaryTreeFullPeroNoEsElFullPostaXdDeDedoCorteFullPeroNoTieneElMismoCodigoEnLaMaquina));
+        Assert.assertEquals(true, binaryTreeApi.equals(arbolvacio,arbolvacio2));
+        Assert.assertEquals(true, binaryTreeApi.equals(arbolInVacio,arbolInVacio2));
+        Assert.assertEquals(false, binaryTreeApi.equals(arbolvacio,arbolInVacio3));
+        Assert.assertEquals(false, binaryTreeApi.equals(arbolInVacio,arbolInVacio3));
+    }
 
     @Test
     public void areIsomorphicsTest(){
@@ -118,17 +132,17 @@ public class BinaryTreeTester {
         Assert.assertEquals(false,binaryTreeApi.isStable(binaryTreeFullMixed));
     }
 
-    /*@Test
+    @Test
     public void occuresInTest(){
         Assert.assertEquals(true,binaryTreeApi.occurresIn(binaryTreeFull,binaryTreeInFull));
-        Assert.assertEquals(true,binaryTreeApi.occurresIn(binaryTreeFull,binaryTreeFull));
-        Assert.assertEquals(true,binaryTreeApi.occurresIn(binaryTreeInFull,binaryTreeInFull));
-        Assert.assertEquals(false,binaryTreeApi.occurresIn(binaryTreeFull,binaryTreeFullMixed));
-        Assert.assertEquals(true,binaryTreeApi.occurresIn(binaryTreeFullMixed,binaryTreeFullMixed));
-        Assert.assertEquals(true,binaryTreeApi.occurresIn(binaryTreeInFull,binaryTreeFull));
-        Assert.assertEquals(true,binaryTreeApi.occurresIn(binaryTreeStable,binaryTreeStable));
-        Assert.assertEquals(false,binaryTreeApi.occurresIn(binaryTreeStable,binaryTreeFull));
-    }*/
+        //Assert.assertEquals(true,binaryTreeApi.occurresIn(binaryTreeFull,binaryTreeFull));
+        //Assert.assertEquals(true,binaryTreeApi.occurresIn(binaryTreeInFull,binaryTreeInFull));
+        //Assert.assertEquals(false,binaryTreeApi.occurresIn(binaryTreeFull,binaryTreeFullMixed));
+        //Assert.assertEquals(true,binaryTreeApi.occurresIn(binaryTreeFullMixed,binaryTreeFullMixed));
+        //Assert.assertEquals(true,binaryTreeApi.occurresIn(binaryTreeInFull,binaryTreeFull));
+        //Assert.assertEquals(true,binaryTreeApi.occurresIn(binaryTreeStable,binaryTreeStable));
+        //Assert.assertEquals(false,binaryTreeApi.occurresIn(binaryTreeStable,binaryTreeFull));
+    }
 
     @Test
     public void frontierTest(){
