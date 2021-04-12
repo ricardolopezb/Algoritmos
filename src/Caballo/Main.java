@@ -1,11 +1,13 @@
 package Caballo;
 
+import util.IsEmptyException;
 import util.Scanner;
 
 public class Main {
     static MovimientoDeCaballo movCaballo;
     public static void main(String[] args) {
 
+        // funciona el showstacks
 
         movCaballo = new MovimientoDeCaballo(3, new Tile('A', 1));
         movCaballo.addPositionsToStack(1);
@@ -13,6 +15,13 @@ public class Main {
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n-----------------------------------");
 
         movCaballo.addPositionsToStack(2);
+        //movCaballo.addPositionsToStack(3);
+        try{
+            movCaballo.showStacks();
+        } catch(IsEmptyException e){
+            e.getMessage();
+        }
+
 
 
         /*Caballo cab = new Caballo(new Tile('B', 3));
