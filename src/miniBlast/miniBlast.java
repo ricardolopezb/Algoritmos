@@ -1,5 +1,7 @@
 package miniBlast;
 
+import util.StaticStack;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -7,12 +9,21 @@ public class miniBlast {
 
     public static void main(String[] args) {
 
+        StaticStack<Integer> droga = new StaticStack<>();
+        droga.stack(666);
+        droga.stack(420);
+        droga.stack(69);
+
+        //StaticStack<Integer> paco = (StaticStack<Integer>) droga.clone();
+
+
+
         //initial testing char[]
 
-        char[]a={'a','g','t','c','c','a','a','t', 'c', 'g', 'a', 'c', 'a', 'a'};
-        char[]b={'t','c','t','c','c','a','t','g', 't', 'g', 'c', 'c', 't', 'g'};
+        //char[]a={'a','g','t','c','c','a','a','t', 'c', 'g', 'a', 'c', 'a', 'a'};
+        //char[]b={'t','c','t','c','c','a','t','g', 't', 'g', 'c', 'c', 't', 'g'};
 
-        miniBlast(a, b);
+        //miniBlast(a, b);
     }
 
     //Prints out a BLAST report over two given DNA Base sequences.

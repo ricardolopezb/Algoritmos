@@ -7,10 +7,6 @@ public class Caballo {
     private Tile posicion;
 
 
-    public Caballo() {
-        this.posicion = new Tile();
-    }
-
     public Caballo(Tile tile){
         this.posicion = tile;
     }
@@ -32,11 +28,10 @@ public class Caballo {
         nextTiles[7] = (new Tile((char)(xPos-1), yPos-2));
 
 
-
         return removeImpossibles(nextTiles);
 
-
     }
+
 
     private Tile[] removeImpossibles(Tile[] nextTiles) {
         for (int i = 0; i < nextTiles.length; i++) {
@@ -61,12 +56,4 @@ public class Caballo {
         return temp;
     }
 
-
-    public Tile getPosicion() {
-        return posicion;
-    }
-
-    public void setPosicion(Tile posicion) {
-        this.posicion = posicion;
-    }
 }
