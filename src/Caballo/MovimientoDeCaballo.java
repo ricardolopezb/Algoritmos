@@ -40,11 +40,11 @@ public class MovimientoDeCaballo {
                 stacks[i].pop();
             }
 
-            for (Tile tile: tilesInStack) {
-                if(tile == null) break;
-                System.out.println(tile.toString());
+            for (int k = 0;k<stacks[i].size();k++) {
+                if(tilesInStack[k] == null) break;
+                System.out.println(tilesInStack[k].toString());
             }
-            for (int j = 0; j < tilesInStack.length; j++) {
+            for (int j = 0; j < stacks[i].size(); j++) {
                 stacks[i].stack(tilesInStack[j]);
             }
 
