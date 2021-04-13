@@ -7,7 +7,7 @@ public class Main {
     static MovimientoDeCaballo movCaballo;
     public static void main(String[] args) {
 
-        // funciona el showstacks
+        /* funciona el showstacks
 
         movCaballo = new MovimientoDeCaballo(3, new Tile('A', 1));
         movCaballo.addPositionsToStack(1);
@@ -20,8 +20,21 @@ public class Main {
             movCaballo.showStacks();
         } catch(IsEmptyException e){
             e.getMessage();
-        }
+        }*/
 
+        movCaballo = new MovimientoDeCaballo(3, new Tile('A', 1));
+        //movCaballo.addPositionsToStack(1);
+        movCaballo.fillInitialStacks();
+
+
+
+        //movCaballo.getAllPaths(3);
+
+        try {
+            movCaballo.showStacks();
+        }catch (IsEmptyException e){
+            e.getMessage();
+        }
 
 
         /*Caballo cab = new Caballo(new Tile('B', 3));
