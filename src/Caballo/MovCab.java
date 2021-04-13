@@ -5,6 +5,8 @@ import util.StaticStack;
 
 public class MovCab {
 
+    /**NOTA: TRABAJAR DESDE EL QUE ESTA EN KBALLO O */
+
     private Caballo caballo;
     private StaticStack<Tile>[] stacks;
     private int saltos;
@@ -31,37 +33,67 @@ public class MovCab {
         }
     }
 
-    public void getPaths(int indexToPop){
+    public void getPaths(){
 
-        if (indexToPop==saltos) return;
-
-        while (!stacks[saltos-indexToPop].isEmpty()){
+        if (!isEmptyStack()){
             printPath();
             try {
-                stacks[saltos-indexToPop].pop();
-            }catch (IsEmptyException e){
-                e.getMessage();
-            }
+                stacks[saltos-1].pop();
+            }catch (IsEmptyException e){e.getMessage();}
+
+            getPaths();
+        }
+        else {
+            droga(2);
+            getPaths();
         }
 
-        try {
-            stacks[saltos-indexToPop-1].pop();
-        }catch (IsEmptyException e){
-            e.getMessage();
-        }
-        fillStackWithNexPosition();
-        getPaths(indexToPop+1);
 
     }
 
-    private void fillStackWithNexPosition(Tile tile, int index) {
+    private void droga(int index){
+        if (index == saltos) return;
+        if (!stacks[saltos-index].isEmpty()){
+            Tile[] temp = new Caballo(stacks[saltos-index].peek()).getNextTiles();
+
+            for (int i = 0; i < temp.length; i++) {
+                stacks[saltos-index+1].stack(temp[i]);
+            }
+
+            droga(index+1);
+        }
+        else {
+             droga(index+1);
+        }
+    }
+
+    private void findAndFillEmptyStack(){
         int n = 0;
-        Tile[] nextPositions = new Caballo(tile).getNextTiles();
-        while (n<index){
-            Tile temp = nextPositions[]
-            Tile[] aux = new Caballo();
+        for (int i=0; i < stacks.length; i++) {
+            if (stacks[i].isEmpty()) n = i;
+        }
+        Tile temp = stacks[n-1].peek();
+        metodoRecursivo(n,temp);
+    }
+
+    private boolean isEmptyStack(){
+        for (int i=0; i < stacks.length; i++) {
+            if (stacks[i].isEmpty()) return true;
+        }
+        return false;
+    }
+
+    public void metodoRecursivo(int n,Tile temp){
+        if (n > saltos) return;
+
+        Tile[] aux = new Caballo(temp).getNextTiles();
+
+        for (int i = 0; i < aux.length; i++) {
+            stacks[n].stack(aux[i]);
         }
 
+        temp = stacks[n].peek();
+        metodoRecursivo(n+1,temp);
     }
 
     //Printea los stacks. Arreglar despues

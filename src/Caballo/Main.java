@@ -9,7 +9,7 @@ public class Main {
 
         movCaballo = new MovCab(3,new Tile('A',1));
         movCaballo.fillInitialStacks();
-        movCaballo.getPaths(0);
+        movCaballo.getPaths();
 
 
     }

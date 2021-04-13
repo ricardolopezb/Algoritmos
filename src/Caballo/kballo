@@ -134,3 +134,24 @@ FALLA LA CONSERVACION DE LOS STACKS ANTERIORES AL INDICE DADO
 
     }*/
 }
+
+
+
+
+
+while (!stacks[saltos-indexToPop].isEmpty()){
+            printPath();
+            try {
+                stacks[saltos-indexToPop].pop();
+            }catch (IsEmptyException e){
+                e.getMessage();
+            }
+        }
+
+        try {
+            stacks[saltos-indexToPop-1].pop();
+        }catch (IsEmptyException e){
+            e.getMessage();
+        }
+        findAndFillEmptyStack();
+        getPaths(indexToPop);
