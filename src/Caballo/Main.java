@@ -7,7 +7,7 @@ public class Main {
     static MovCab movCaballo;
     public static void main(String[] args) {
 
-        movCaballo = new MovCab(3,new Tile('A',1));
+        movCaballo = new MovCab(3,new Tile('D',5));
         movCaballo.fillInitialStacks();
         movCaballo.getPaths();
 

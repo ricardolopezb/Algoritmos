@@ -35,32 +35,38 @@ public class MovCab {
 
     public void getPaths(){
 
-        if (!isEmptyStack()){
+        while(!stacks[stacks.length-1].isEmpty()){
             printPath();
             try {
-                stacks[saltos-1].pop();
+                stacks[stacks.length-1].pop();
             }catch (IsEmptyException e){e.getMessage();}
+        }
 
-            getPaths();
-        }
-        else {
-            droga(2);
-            getPaths();
-        }
+        droga(1);
+        getPaths();
+
 
 
     }
 
+
+
+
     private void droga(int index){
-        if (index == saltos) return;
+        if (index == saltos) System.exit(2);
         if (!stacks[saltos-index].isEmpty()){
             Tile[] temp = new Caballo(stacks[saltos-index].peek()).getNextTiles();
 
             for (int i = 0; i < temp.length; i++) {
                 stacks[saltos-index+1].stack(temp[i]);
             }
+            try{
+                stacks[saltos-index].pop();
+            }catch (IsEmptyException e){
+                e.getMessage();
+            }
 
-            droga(index+1);
+            return;
         }
         else {
              droga(index+1);
@@ -96,7 +102,7 @@ public class MovCab {
         metodoRecursivo(n+1,temp);
     }
 
-    //Printea los stacks. Arreglar despues
+    //todo Printea los stacks. Arreglar despues
     public void showStacks() {
 
         for (int i = 0; i < stacks.length; i++) {
@@ -124,9 +130,18 @@ public class MovCab {
         String toReturn ="\n"+stacks[0].peek().toString();
         for (int i = 1; i < stacks.length; i++) {
             if (stacks[i].peek()!=null){
-            toReturn += " - "+stacks[i].peek().toString();}
+            toReturn += " - "+stacks[i].peek().toString();
+            } else{
+                return;
+            }
         }
+
         System.out.println(toReturn);
+
+
+
+
+
     }
 
 
