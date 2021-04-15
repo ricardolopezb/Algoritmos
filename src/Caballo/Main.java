@@ -18,6 +18,14 @@ public class Main {
 
         System.out.println("\nInput starting position (e.g. A1)\n");
         String pos = Scanner.getString("--> ");
+        pos = pos.toUpperCase();
+
+        while (pos.charAt(0)>'H' || (Integer.valueOf(pos.substring(1))<0||Integer.valueOf(pos.substring(1))>8)){
+            System.out.println("\nInput starting position (e.g. A1)\n");
+            pos = Scanner.getString("--> ");
+            pos = pos.toUpperCase();
+        }
+
         System.out.println("\n\nInput the number of moves desired (max 5)\n");
         int jumps = Scanner.getInt("--> ");
         System.out.println("\n\n");
