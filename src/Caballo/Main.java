@@ -30,6 +30,12 @@ public class Main {
         int jumps = Scanner.getInt("--> ");
         System.out.println("\n\n");
 
+        while(jumps<1 || jumps>5){
+            System.out.println("\n\nInput the number of moves desired (max 5)\n");
+            jumps = Scanner.getInt("--> ");
+            System.out.println("\n\n");
+        }
+
         while(true){
             System.out.println("-------- Chess Horse Moves --------\n");
 
