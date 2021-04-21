@@ -1,5 +1,8 @@
 package ArbolBinario;
 
+import util.DynamicQueue;
+import util.IsEmptyException;
+
 import java.util.ArrayList;
 
 public class BinaryTreeApi<T>  {
@@ -73,8 +76,7 @@ public class BinaryTreeApi<T>  {
     public boolean equals(BinaryTree<T> a, BinaryTree<T> b) {
        if (a.isEmpty() && b.isEmpty()) return true;
        if (!a.isEmpty() && b.isEmpty() || (a.isEmpty() && !b.isEmpty())) return false;
-       if (!a.getRoot().equals(b.getRoot())) return false;
-       return equals(a.getLeft(),b.getLeft()) && equals(a.getRight(),b.getRight());
+       return (a.getRoot().equals(b.getRoot())) && equals(a.getLeft(),b.getLeft()) && equals(a.getRight(),b.getRight());
     }
 
     public boolean areIsomorphics(BinaryTree<T> a, BinaryTree<T> b) {
@@ -114,16 +116,24 @@ public class BinaryTreeApi<T>  {
         return isStable(tree.getRight()) && isStable(tree.getLeft());
     }
 
-    /**     B OCURRE EN A        report ricky */
-    public boolean occurresIn(BinaryTree<T> grande, BinaryTree<T> chiquito) { //b ocurre en a (ya basta ricky)
-    /*if (size(chiquito)>size(grande)) return false;
-    if (equals(grande,chiquito)) return true;
-    return occurresIn(grande.getLeft(), chiquito) || occurresIn(grande.getRight(), chiquito);
 
-    if (chiquito.isEmpty()) return true;
-    if (occurrences(chiquito,grande.getRoot()) == 1) return occurresIn(chiquito.getLeft(),grande) && occurresIn(chiquito.getRight(), grande);
-    else return false;*/
-        return grande.equals(chiquito);
+    public boolean occurresIn(BinaryTree<T> a, BinaryTree<T> b) { //b ocurre en a (ya basta ricky)
+
+        if (a.isEmpty()) return false;
+        if (b.isEmpty()) return true;
+        if (equals(a,b)) return true;
+        return occurresIn(a.getLeft(), b) || occurresIn(a.getRight(), b);
+
+    }
+
+    private void searchSubTrees(BinaryTree<T> tree, DynamicQueue<BinaryTree> queue){
+
+        if (tree.isEmpty()) return;
+        else {
+            queue.enqueue(tree);
+            searchSubTrees(tree.getLeft(), queue);
+            searchSubTrees(tree.getRight(), queue);
+        }
     }
 
     public void showFrontier(BinaryTree<T> tree) {
@@ -146,8 +156,6 @@ public class BinaryTreeApi<T>  {
         frontierAuxiliar(tree.getRight(),frontier);
         }
     }
-
-
 
     /**--------------------------------------------- ORDENAR --------------------------------------------------*/
 
@@ -204,21 +212,53 @@ public class BinaryTreeApi<T>  {
         }
     }
 
-    /**revisar y hacer los dos de abajo xdn't*/
+
     public void perLevel(BinaryTree<T> tree){
-        if (!tree.isEmpty()){
-            System.out.println(tree.getRoot());
-            System.out.println(tree.getLeft().getRoot());
-            System.out.println(tree.getRight().getRoot());
-            perLevel(tree.getLeft().getLeft());
-            perLevel(tree.getLeft().getRight());
-            perLevel(tree.getRight().getLeft());
-            perLevel(tree.getRight().getRight());
+        DynamicQueue<BinaryTree> queue = new DynamicQueue<>();
+        queue.enqueue(tree);
+        while (!queue.isEmpty()){
+            BinaryTree<T> a = null;
+            try {
+                 a =  queue.dequeue();
+                System.out.println(a.getRoot());
+
+            }catch (IsEmptyException e){
+                e.getMessage();
+            }
+
+            if (!a.getLeft().isEmpty()){
+                queue.enqueue(a.getLeft());
+            }
+            if (!a.getRight().isEmpty()){
+                queue.enqueue(a.getRight());
+            }
 
         }
+
 
     }
 
 
-    public void perLevel(BinaryTree<T> tree, ArrayList<T> traversal){}
+    public void perLevel(BinaryTree<T> tree, ArrayList<T> traversal){
+        DynamicQueue<BinaryTree> queue = new DynamicQueue<>();
+        queue.enqueue(tree);
+        while (!queue.isEmpty()){
+            BinaryTree<T> a = null;
+            try {
+                a =  queue.dequeue();
+                traversal.add(a.getRoot());
+
+            }catch (IsEmptyException e){
+                e.getMessage();
+            }
+
+            if (!a.getLeft().isEmpty()){
+                queue.enqueue(a.getLeft());
+            }
+            if (!a.getRight().isEmpty()){
+                queue.enqueue(a.getRight());
+            }
+
+        }
+    }
 }

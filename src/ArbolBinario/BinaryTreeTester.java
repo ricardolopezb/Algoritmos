@@ -10,7 +10,7 @@ public class BinaryTreeTester {
 
     static BinaryTree<Integer> left = new BinaryTree<Integer>(2,new BinaryTree<Integer>(4), new BinaryTree<Integer>(5));
     static BinaryTree<Integer> right = new BinaryTree<Integer>(3,new BinaryTree<Integer>(6), new BinaryTree<Integer>(7));
-    static BinaryTree<Integer> rightNull = new BinaryTree<Integer>(3,new BinaryTree<Integer>(6), new BinaryTree<Integer>());
+    static BinaryTree<Integer> rightNull = new BinaryTree<Integer>(3,new BinaryTree<Integer>(6),new BinaryTree<>());
     static BinaryTree<Integer> binaryTreeFull = new BinaryTree<Integer>(1,left,right);
     static BinaryTree<Integer> binaryTreeInFull = new BinaryTree<Integer>(1,left,rightNull);
     static BinaryTreeApi<Integer> binaryTreeApi = new BinaryTreeApi<>();
@@ -25,7 +25,7 @@ public class BinaryTreeTester {
 
     static BinaryTree<Integer> binaryTreeManco = new BinaryTree<>(1,left,new BinaryTree<>(22));
 
-    static BinaryTree<Integer> binaryTreeFullPeroNoEsElFullPostaXdDeDedoCorteFullPeroNoTieneElMismoCodigoEnLaMaquina = new BinaryTree<>(1,left,right);
+    static BinaryTree<Integer> binaryTreeFull2 = new BinaryTree<>(1,left,right);
 
     static BinaryTree<Integer> arbolvacio = new BinaryTree<>();
     static BinaryTree<Integer> arbolvacio2 = new BinaryTree<>();
@@ -88,7 +88,7 @@ public class BinaryTreeTester {
         Assert.assertEquals(false, binaryTreeApi.equals(binaryTreeFull,binaryTreeInFull));
         Assert.assertEquals(true, binaryTreeApi.equals(binaryTreeFull,binaryTreeFull));
         Assert.assertEquals(true, binaryTreeApi.equals(binaryTreeInFull,binaryTreeInFull));
-        Assert.assertEquals(true, binaryTreeApi.equals(binaryTreeFull,binaryTreeFullPeroNoEsElFullPostaXdDeDedoCorteFullPeroNoTieneElMismoCodigoEnLaMaquina));
+        Assert.assertEquals(true, binaryTreeApi.equals(binaryTreeFull, binaryTreeFull2));
         Assert.assertEquals(true, binaryTreeApi.equals(arbolvacio,arbolvacio2));
         Assert.assertEquals(true, binaryTreeApi.equals(arbolInVacio,arbolInVacio2));
         Assert.assertEquals(false, binaryTreeApi.equals(arbolvacio,arbolInVacio3));
@@ -134,14 +134,14 @@ public class BinaryTreeTester {
 
     @Test
     public void occuresInTest(){
-        Assert.assertEquals(true,binaryTreeApi.occurresIn(binaryTreeFull,binaryTreeInFull));
-        //Assert.assertEquals(true,binaryTreeApi.occurresIn(binaryTreeFull,binaryTreeFull));
-        //Assert.assertEquals(true,binaryTreeApi.occurresIn(binaryTreeInFull,binaryTreeInFull));
-        //Assert.assertEquals(false,binaryTreeApi.occurresIn(binaryTreeFull,binaryTreeFullMixed));
-        //Assert.assertEquals(true,binaryTreeApi.occurresIn(binaryTreeFullMixed,binaryTreeFullMixed));
-        //Assert.assertEquals(true,binaryTreeApi.occurresIn(binaryTreeInFull,binaryTreeFull));
-        //Assert.assertEquals(true,binaryTreeApi.occurresIn(binaryTreeStable,binaryTreeStable));
-        //Assert.assertEquals(false,binaryTreeApi.occurresIn(binaryTreeStable,binaryTreeFull));
+        Assert.assertEquals(true,binaryTreeApi.occurresIn(binaryTreeFull,binaryTreeInFull.getLeft()));
+        Assert.assertEquals(true,binaryTreeApi.occurresIn(binaryTreeFull,binaryTreeFull));
+        Assert.assertEquals(true,binaryTreeApi.occurresIn(binaryTreeInFull,binaryTreeInFull));
+        Assert.assertEquals(false,binaryTreeApi.occurresIn(binaryTreeFull,binaryTreeFullMixed));
+        Assert.assertEquals(true,binaryTreeApi.occurresIn(binaryTreeFullMixed,binaryTreeFullMixed));
+        Assert.assertEquals(false,binaryTreeApi.occurresIn(binaryTreeInFull,binaryTreeFull));
+        Assert.assertEquals(true,binaryTreeApi.occurresIn(binaryTreeStable,binaryTreeStable));
+        Assert.assertEquals(false,binaryTreeApi.occurresIn(binaryTreeStable,binaryTreeFull));
     }
 
     @Test
@@ -217,4 +217,21 @@ public class BinaryTreeTester {
         binaryTreeApi.postorder(binaryTreeFull,postorderTest);
         Assert.assertEquals(true,postorderFull.equals(postorderTest));
     }
+
+    @Test
+    public void perLevelTest(){
+        ArrayList<Integer> list = new ArrayList<>();
+        ArrayList<Integer> perLevel = new ArrayList<>();
+        binaryTreeApi.perLevel(binaryTreeFull,perLevel);
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(5);
+        list.add(6);
+        list.add(7);
+        Assert.assertEquals(true,list.equals(perLevel));
+    }
+
+
 }
