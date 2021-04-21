@@ -223,13 +223,9 @@ public class BinaryTreeTester {
         ArrayList<Integer> list = new ArrayList<>();
         ArrayList<Integer> perLevel = new ArrayList<>();
         binaryTreeApi.perLevel(binaryTreeFull,perLevel);
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        list.add(4);
-        list.add(5);
-        list.add(6);
-        list.add(7);
+        for (int i = 1; i <= 7; i++) {
+            list.add(i);
+        }
         Assert.assertEquals(true,list.equals(perLevel));
     }
 
