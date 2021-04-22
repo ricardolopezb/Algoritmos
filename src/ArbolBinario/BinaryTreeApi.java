@@ -116,7 +116,6 @@ public class BinaryTreeApi<T>  {
         return isStable(tree.getRight()) && isStable(tree.getLeft());
     }
 
-
     public boolean occurresIn(BinaryTree<T> a, BinaryTree<T> b) { //b ocurre en a (ya basta ricky)
 
         if (a.isEmpty()) return false;

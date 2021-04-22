@@ -39,4 +39,16 @@ public class DoubleNode<T> {
     public boolean isEmpty() {
         return data == null;
     }
+
+    public void setData(T data) {
+        this.data = data;
+    }
+
+    public void setLeft(DoubleNode left) {
+        this.left = left;
+    }
+
+    public void setRight(DoubleNode right) {
+        this.right = right;
+    }
 }
