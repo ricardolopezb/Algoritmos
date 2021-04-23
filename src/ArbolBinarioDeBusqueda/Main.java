@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<Organism> list = new ArrayList<>();
 
-        Organism organism1 = new Organism("AAAAA","ALejochan","c la come",15,23);
+        Organism organism1 = new Organism("AAAAA","ALejochan","alejochan",15,23);
         Organism organism2 = new Organism("BBBBB","Camichan","kmichan",45,45);
         Organism organism3 = new Organism("CCCCC","rikichan","rikichan",48,48);
         Organism organism4 = new Organism("Alejo","rikichan","rikichan",48,48);
