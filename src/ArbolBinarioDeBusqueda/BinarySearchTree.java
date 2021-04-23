@@ -4,7 +4,7 @@ import ArbolBinario.BinaryTree;
 import ArbolBinario.DoubleNode;
 import util.*;
 
-public class BinarySearchTree <T>{
+public class BinarySearchTree <T> extends BinaryTree<T>{
     // Implementacion de un arbol binario de busqueda no balanceado
     // Autor Alicia Gioia
 
@@ -15,13 +15,13 @@ public class BinarySearchTree <T>{
     }
 
     // precondicion: elemento a insertar no pertenece al árbol
-    public void insert(Comparable <T> x){
+    public void insert(Comparable <T> x) throws BSTException {
         root = insert(root, x);
     }
 
 
     // precondicion: elemento a eliminar pertenece al árbol
-    public void delete(Comparable <T> x){
+    public void delete(Comparable <T> x) throws BSTException {
         root = delete(root, x);
     }
 
@@ -86,6 +86,7 @@ public class BinarySearchTree <T>{
     }
 
     private DoubleNode <T> search(DoubleNode <T> t, Comparable<T> x){
+        if (x == null) throw new NullPointerException();
         if (x.compareTo(t.getData())== 0)
             return t;
         else if (x.compareTo( t.getData())< 0)
@@ -106,7 +107,8 @@ public class BinarySearchTree <T>{
     }
 
 
-    private DoubleNode<T> insert (DoubleNode <T> t, Comparable <T> x) {
+    private DoubleNode<T> insert (DoubleNode <T> t, Comparable <T> x) throws BSTException {
+        if (exists(x)) throw new BSTException("Item already exists in the tree.");
         if (t == null){
             t = new DoubleNode<T>();
             t.setData((T) x);
@@ -120,7 +122,8 @@ public class BinarySearchTree <T>{
     }
 
 
-    private DoubleNode<T> delete (DoubleNode<T> t, Comparable<T> x) {
+    private DoubleNode<T> delete (DoubleNode<T> t, Comparable<T> x) throws BSTException {
+        if (!exists(x)) throw new BSTException("Element does not exist in the tree.");
         if (x.compareTo(t.getData()) < 0)
             t.setLeft(delete(t.getLeft(), x));
         else if (x.compareTo(t.getData()) > 0)
