@@ -43,12 +43,13 @@ public class Booth {
         int sum = 0;
         while (!getLocalTickets().isEmpty()){
             Ticket tempTicket = getLocalTickets().peek();
-            sum+= tempTicket.getPrice();
+            sum+= tempTicket.getPassenger().getWaitTime();
             tempStack.stack(tempTicket);
             getLocalTickets().pop();
         }
         setLocalTickets(tempStack);
-        return sum/size;
+        if (size != 0) return sum/size;
+        else return 0;
     }
 
     public void addPassenger(Passenger p){
@@ -70,8 +71,7 @@ public class Booth {
     public void showInfo(){
         try{
             System.out.println("Time average = " + timeAverage() + " seconds.\n\n");
-            System.out.println("\n\n"+localTicketsToString());
-            System.out.println("\n\n"+queueToString());
+            System.out.println("Revenue = "+getRevenue()+" pesos.\n\n");
         }catch (IsEmptyException e){
             e.getMessage();
         }
