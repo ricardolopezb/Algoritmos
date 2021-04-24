@@ -7,11 +7,16 @@ import util.StaticStack;
 
 /**
  *
- * todo terminar punto 1, ver como sacar la media de tiempo por booth
+ * todo terminar punto 1, ver como sacar la media de tiempo por booth LISTORTI
  *
- * todo armar la simulacion
+ * todo armar la simulacion LISTORTI
  *
+ * todo mostrar elementos en las pilas LISTORTI
  *
+ * todo PONER EL LAMBDA EN LAS BOOTHS
+ * todo ARREGLAR EL SHOW BOOTHS AUNQUE NO ES ENCESARIO
+ *
+ * Tema de la media del tiempo, agregar una variable privada en booths y esta se la pasas en el constructor del station, y hacer un metodo que sea set lambda para darselas a las booths o cunado las creamos las instanciamos con eso variable y ya esta.
  */
 
 public class Station {
@@ -56,7 +61,36 @@ public class Station {
         }
     }
 
+    public void boothsHandlePassangers() throws IsEmptyException {
+        for (int i = 0; i < getBooths().length; i++) {
+            getBooths()[i].handlePassenger();
+        }
+    }
 
+    public Booth[] getBooths() {
+        return booths;
+    }
 
+    public StaticStack<Ticket> getTicketStack() {
+        return ticketStack;
+    }
+
+    public DynamicQueue<Passenger> getCurrentPassengers() {
+        return currentPassengers;
+    }
+
+    public void showStack() throws IsEmptyException {
+        collectBoothTickets();
+        while (!getTicketStack().isEmpty()){
+            try {
+                Ticket tempTicket = getTicketStack().peek();
+                System.out.println(tempTicket.toString());
+                getTicketStack().pop();
+
+            }catch (IsEmptyException e){
+                e.getMessage();
+            }
+        }
+    }
 
 }

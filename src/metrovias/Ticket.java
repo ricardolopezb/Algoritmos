@@ -56,4 +56,8 @@ public class Ticket {
     private static void checkCode(){
         if (codeReference==100000) codeReference = 0;
     }
+
+    public String toString(){
+        return "Passenger: "+getPassenger().toString() +"\tTicket code: "+getCode()+"\tTicket price: "+getPrice();
+    }
 }
