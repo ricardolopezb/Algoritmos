@@ -7,8 +7,8 @@ public class Organism implements Comparable {
     private String description;
     private int[] size;
 
-    public Organism(String code, String type, String description, int size1, int size2) {
-
+    public Organism(String code, String type, String description, int size1, int size2)throws IncompatibleCode {
+        if (code.length()!=5)throw new IncompatibleCode();
         this.code = code;
         this.type = type;
         this.description = description;
@@ -52,7 +52,7 @@ public class Organism implements Comparable {
 
     public int compareTo(Object o) {
         Organism x = (Organism) o;
-        return getCode().compareTo(x.getCode());
+        return getCode().toLowerCase().compareTo(x.getCode().toLowerCase());
     }
 
 }

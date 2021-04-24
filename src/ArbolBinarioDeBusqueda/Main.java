@@ -14,39 +14,41 @@ import java.util.ArrayList;
 public class Main {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IncompatibleCode {
         ArrayList<Organism> list = new ArrayList<>();
 
-        Organism organism1 = new Organism("AAAAA","ALejochan","alejochan",15,23);
-        Organism organism2 = new Organism("BBBBB","Camichan","kmichan",45,45);
-        Organism organism3 = new Organism("CCCCC","rikichan","rikichan",48,48);
-        Organism organism4 = new Organism("Alejo","rikichan","rikichan",48,48);
-        Organism organism5 = new Organism("Santi","rikichan","rikichan",48,48);
+        //Creation of the organism samples
+        Organism organism1 = new Organism("AAAAA","type","description",0,0);
+        Organism organism2 = new Organism("BBBBB","type","description",0,0);
+        Organism organism3 = new Organism("CCCCC","type","description",0,0);
+        Organism organism4 = new Organism("DDDDD","type","description",0,0);
+        Organism organism5 = new Organism("EEEEE","type","description",0,0);
 
+        //we add them to the list
         list.add(organism2);
         list.add(organism3);
         list.add(organism1);
         list.add(organism5);
         list.add(organism4);
 
+        //Creation of the tree and the object in charge of managing the movement from  list to tree.
         BinarySearchTree<Organism> tree = new BinarySearchTree<>();
-        DataTransporter dataTransporter = new DataTransporter();
+        memoryManager dataTransporter = new memoryManager();
 
         try {
             dataTransporter.transport(tree,list);
+            //we eliminate an organism to test the method
+            dataTransporter.eliminate(tree,"aaaaa");
         }catch (BSTException e){
             e.getMessage();
         }
+         //Some information of the tree
+        dataTransporter.inform(tree);
 
-        BinaryTreeApi binaryTreeApi = new BinaryTreeApi();
+        dataTransporter.getInfo(tree,organism1);
+        dataTransporter.getInfo(tree,organism2);
 
-        ArrayList<Organism> perLevel = new ArrayList<>();
 
-        binaryTreeApi.perLevel(tree,perLevel);
-
-        for (int i = 0; i < perLevel.size(); i++) {
-            System.out.println(perLevel.get(i).getCode());
-        }
     }
 
 
