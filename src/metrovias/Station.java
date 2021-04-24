@@ -24,10 +24,19 @@ public class Station {
     private StaticStack<Ticket> ticketStack;
     private DynamicQueue<Passenger> currentPassengers;
 
+    public Station(int boothNum, float lambda) {
+        this.booths = new Booth[boothNum];
+        for (int i = 0; i < booths.length; i++) {
+            booths[i] = new Booth(lambda);
+        }
+        this.ticketStack = new StaticStack<>();
+        this.currentPassengers = new DynamicQueue<>();
+    }
+
     public Station(int boothNum) {
         this.booths = new Booth[boothNum];
         for (int i = 0; i < booths.length; i++) {
-            booths[i] = new Booth();
+            booths[i] = new Booth(1);
         }
         this.ticketStack = new StaticStack<>();
         this.currentPassengers = new DynamicQueue<>();

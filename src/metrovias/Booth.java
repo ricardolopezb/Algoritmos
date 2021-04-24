@@ -8,14 +8,15 @@ public class Booth {
     private DynamicQueue<Passenger> queue;
     private int revenue;
     private StaticStack<Ticket> localTickets;
-
+    private float timeMultiplicator;
     private int timePassed;
 
-    public Booth() {
+    public Booth(float timeMultiplicator) {
         this.queue = new DynamicQueue<>();
         this.revenue = 0;
         this.timePassed = 0;
         this.localTickets = new StaticStack<>();
+        this.timeMultiplicator = timeMultiplicator;
 
     }
 
@@ -28,7 +29,7 @@ public class Booth {
         if(prob == 1){
            Passenger passenger = queue.dequeue();
            ++timePassed;//Lo puse aca pq tmb pq si es atendido no lo atienden en 0 segundos sino en 30. Cachai?
-           passenger.setWaitTime(timePassed);
+           passenger.setWaitTime(timePassed*timeMultiplicator);
            Ticket ticket = new Ticket(passenger);
            revenue+=ticket.getPrice();
            localTickets.stack(ticket);
@@ -40,7 +41,7 @@ public class Booth {
     public float timeAverage() throws IsEmptyException {
         StaticStack<Ticket> tempStack = new StaticStack<>();
         int size = getLocalTickets().size();
-        int sum = 0;
+        float sum = 0;
         while (!getLocalTickets().isEmpty()){
             Ticket tempTicket = getLocalTickets().peek();
             sum+= tempTicket.getPassenger().getWaitTime();
@@ -48,7 +49,7 @@ public class Booth {
             getLocalTickets().pop();
         }
         setLocalTickets(tempStack);
-        if (size != 0) return sum/size;
+        if (size != 0) return (sum/size);
         else return 0;
     }
 

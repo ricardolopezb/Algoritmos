@@ -1,8 +1,5 @@
 package metrovias;
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-
 public class Ticket {
     private static int codeReference = 0;
     private int price = 100;
@@ -17,7 +14,7 @@ public class Ticket {
 
     }
 
-    public int getWaitTime(){
+    public float getWaitTime(){
         return passenger.getWaitTime();
     }
 

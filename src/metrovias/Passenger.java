@@ -1,13 +1,13 @@
 package metrovias;
 
 public class Passenger {
-    private int waitTime = 0;
+    private float waitTime = 0;
 
-    public int getWaitTime() {
+    public float getWaitTime() {
         return waitTime;
     }
 
-    public void setWaitTime(int timePassed) {
+    public void setWaitTime(float timePassed) {
         waitTime = timePassed;
     }
 }

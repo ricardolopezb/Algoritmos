@@ -9,7 +9,7 @@ public class MetroviasTests {
     @Test
     public void boothsCreationTest(){
 
-        Station station = new Station(5);
+        Station station = new Station(5,1);
 
         int count = 0;
         for (int i = 0; i < station.getBooths().length; i++) {

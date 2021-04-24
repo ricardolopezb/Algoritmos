@@ -13,7 +13,7 @@ public class Simulation {
         timeLambda = checkValue(timeLambda,1,Integer.MAX_VALUE,"Insert time lambda (in seconds, ej: 30):\t");
         int boothAmmount = Scanner.getInt("\n\nInsert ammount of booths in your sation (between 5 and 25):\t");
         boothAmmount = checkValue(boothAmmount,4,25,"Insert ammount of booths in your sation (between 5 and 25):\t");
-        Station station = new Station(boothAmmount);
+        Station station = new Station(boothAmmount,timeLambda);
 
         while(true){
             int option = Scanner.getInt("\n\nMENU\n\n1. Advance "+timeLambda+" seconds.\n2. See specific booth info.\n3. Exit.\nInsert option:\t");
