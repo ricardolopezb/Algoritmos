@@ -5,7 +5,7 @@ public class Ticket {
     private int price = 100;
     private Passenger passenger;
     private int code;
-
+    //tiempo de atencion - tiempo de llegada del pasajero
     public Ticket(Passenger passenger) {
         this.passenger = passenger;
         code = codeReference;
@@ -55,6 +55,6 @@ public class Ticket {
     }
 
     public String toString(){
-        return "Passenger: "+getPassenger().toString() +"\tTicket code: "+getCode()+"\tTicket price: "+getPrice();
+        return "Passenger: "+getPassenger().toString() +"\tTicket code: "+getCode()+"\tTicket price: "+getPrice()+"$";
     }
 }
