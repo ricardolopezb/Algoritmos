@@ -60,7 +60,9 @@ public class Station {
     public void distributePassengers() throws IsEmptyException {
         while(!currentPassengers.isEmpty()){
             int destinationBooth = (int)Math.floor(Math.random()*((booths.length-1)-0+1)+0);
-            booths[destinationBooth].addPassenger(currentPassengers.dequeue());
+            Passenger tempPassanger = currentPassengers.dequeue();
+            tempPassanger.setArrivalTime(booths[destinationBooth].getTimePassed()*booths[destinationBooth].getTimeMultiplicator());
+            booths[destinationBooth].addPassenger(tempPassanger);
         }
     }
 

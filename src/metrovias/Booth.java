@@ -28,7 +28,7 @@ public class Booth {
         int prob = (int)Math.floor(Math.random()*((1)-0+1)+0);
         if(prob == 1){
            Passenger passenger = queue.dequeue();
-           ++timePassed;//Lo puse aca pq tmb pq si es atendido no lo atienden en 0 segundos sino en 30. Cachai?
+           ++timePassed;
            passenger.setWaitTime(timePassed*timeMultiplicator);
            Ticket ticket = new Ticket(passenger);
            revenue+=ticket.getPrice();
@@ -71,7 +71,7 @@ public class Booth {
 
     public void showInfo(){
         try{
-            System.out.println("Time average = " + timeAverage() + " seconds.\n\n");
+            System.out.println("\n\nTime average = " + timeAverage() + " seconds.\n");
             System.out.println("Revenue = "+getRevenue()+" pesos.\n\n");
         }catch (IsEmptyException e){
             e.getMessage();
@@ -110,5 +110,9 @@ public class Booth {
 
     public void setQueue(DynamicQueue<Passenger> queue) {
         this.queue = queue;
+    }
+
+    public float getTimeMultiplicator() {
+        return timeMultiplicator;
     }
 }

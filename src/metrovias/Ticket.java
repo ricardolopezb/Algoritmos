@@ -1,7 +1,7 @@
 package metrovias;
 
 public class Ticket {
-    private static int codeReference = 0;
+    private static int codeReference = 10000;
     private int price = 100;
     private Passenger passenger;
     private int code;
@@ -55,6 +55,6 @@ public class Ticket {
     }
 
     public String toString(){
-        return "Passenger: "+getPassenger().toString() +"\tTicket code: "+getCode()+"\tTicket price: "+getPrice()+"$";
+        return "Passenger: "+getPassenger().toString() +"\tTicket code: "+getCode()+"\tTicket price: "+getPrice()+"$"+"\tPassenger wait time: "+getPassenger().getWaitTime()+" seconds.";
     }
 }
