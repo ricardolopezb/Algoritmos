@@ -37,6 +37,7 @@ public class Main {
 
         try {
             dataTransporter.transport(tree,list);
+            dataTransporter.inform(tree);
             //we eliminate an organism to test the method
             dataTransporter.eliminate(tree,"aaaaa");
         }catch (BSTException e){
@@ -44,7 +45,7 @@ public class Main {
         }
          //Some information of the tree
         dataTransporter.inform(tree);
-
+        System.out.println("");
         dataTransporter.getInfo(tree,organism1);
         dataTransporter.getInfo(tree,organism2);
 

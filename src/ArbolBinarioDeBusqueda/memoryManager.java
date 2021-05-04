@@ -3,7 +3,7 @@ package ArbolBinarioDeBusqueda;
 import java.util.ArrayList;
 import ArbolBinario.BinaryTreeApi;
 
-public class memoryManager {
+public class memoryManager<T> {
 
 
     public memoryManager() {
@@ -25,9 +25,7 @@ public class memoryManager {
     public void inform(BinarySearchTree<Organism> tree){
         BinaryTreeApi api=new BinaryTreeApi();
         int size=api.size(tree);
-        System.out.println();
-        System.out.println("**************************************************************************+");
-        System.out.println("There are "+size+" organisms in memory.");
+        System.out.println("\nThere are "+size+" organisms in memory.");
         System.out.println("This is a list of all the organisms ordered by level:");
 
         ArrayList<Organism> perLevel = new ArrayList<>();
@@ -37,19 +35,17 @@ public class memoryManager {
         for (int i = 0; i < perLevel.size(); i++) {
             System.out.println(perLevel.get(i).getCode());
         }
+
+        System.out.println("****************************************************************");
     }
 
     public void getInfo(BinarySearchTree<Organism> tree,Organism organism){
         System.out.println();
         if (tree.exists(organism)){
-            System.out.println("Organism information:");
-            System.out.println("Code: "+organism.getCode());
-            System.out.println("Type: "+organism.getType());
-            System.out.println("Description: "+organism.getDescription());
-            System.out.println("Size: "+organism.getSize()[0]+""+organism.getSize()[1]);
+            System.out.println("Organism's info:\n"+organism.toString()+"\n****************************************************************");
 
         }else{
-            System.out.println("The organism does not exist");
+            System.out.println("The organism does not exist\n****************************************************************");
         }
 
     }

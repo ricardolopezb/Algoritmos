@@ -55,5 +55,9 @@ public class Organism implements Comparable {
         return getCode().toLowerCase().compareTo(x.getCode().toLowerCase());
     }
 
+    public String toString(){
+        return "Code: "+getCode()+"\nType: "+getType()+"\nDescription: "+getDescription()+"\nSize: "+getSize()[0]+""+getSize()[1];
+    }
+
 }
 
