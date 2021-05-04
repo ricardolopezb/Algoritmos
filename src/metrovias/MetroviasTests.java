@@ -29,7 +29,7 @@ public class MetroviasTests {
         }
 
         Assert.assertTrue(tickets[0].getCode() != tickets[1].getCode());
-        Assert.assertEquals(0,tickets[100000].getCode());
+        Assert.assertEquals(10000,tickets[100000].getCode());
 
     }
 

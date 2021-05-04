@@ -55,6 +55,6 @@ public class Ticket {
     }
 
     public String toString(){
-        return "Passenger: "+getPassenger().toString() +"\tTicket code: "+getCode()+"\tTicket price: "+getPrice()+"$"+"\tPassenger wait time: "+getPassenger().getWaitTime()+" seconds.";
+        return getPassenger().toString() +"\tTicket code: "+getCode()+"\tTicket price: "+getPrice()+"$"+"\tPassenger wait time: "+getPassenger().getWaitTime()+" seconds.";
     }
 }
