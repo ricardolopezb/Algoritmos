@@ -1,8 +1,7 @@
 package Caballo;
 
 import util.IsEmptyException;
-import util.Scanner;
-import util.StaticStack;
+import util.Stack.StaticStack;
 
 public class MovCab {
 

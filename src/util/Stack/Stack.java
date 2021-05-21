@@ -1,5 +1,7 @@
-package util;
+package util.Stack;
 
+
+import util.IsEmptyException;
 
 public interface Stack<T> {
 

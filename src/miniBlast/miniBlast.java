@@ -1,8 +1,7 @@
 package miniBlast;
 
-import util.StaticStack;
+import util.Stack.StaticStack;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class miniBlast {

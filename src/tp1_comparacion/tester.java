@@ -1,7 +1,8 @@
 package tp1_comparacion;
-import org.junit.Test;
 
-import static org.junit.Assert.assertArrayEquals;
+import org.testng.annotations.Test;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 
 public class tester {

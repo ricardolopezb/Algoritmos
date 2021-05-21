@@ -1,8 +1,8 @@
-package util;
+package util.Stack;
 
 import util.IsEmptyException;
 
-public class StaticStack<T> implements Stack<T>{
+public class StaticStack<T> implements Stack<T> {
 
     T[] data = (T[])new Object[10];
     int top = 0;

@@ -1,5 +1,7 @@
-package util;
+package util.Queue;
 
+
+import util.IsEmptyException;
 
 public interface Queue<T> {
 

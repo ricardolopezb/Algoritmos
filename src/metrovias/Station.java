@@ -1,8 +1,8 @@
 package metrovias;
 
-import util.DynamicQueue;
+import DynamicQueue;
 import util.IsEmptyException;
-import util.StaticStack;
+import util.Stack.StaticStack;
 
 
 /**

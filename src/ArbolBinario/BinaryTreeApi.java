@@ -1,6 +1,6 @@
 package ArbolBinario;
 
-import util.DynamicQueue;
+import DynamicQueue;
 import util.IsEmptyException;
 
 import java.util.ArrayList;

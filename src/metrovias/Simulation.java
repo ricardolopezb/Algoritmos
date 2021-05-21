@@ -3,7 +3,7 @@ package metrovias;
 import org.hamcrest.core.Is;
 import util.IsEmptyException;
 import util.Scanner;
-import util.StaticStack;
+import util.Stack.StaticStack;
 
 public class Simulation {
 

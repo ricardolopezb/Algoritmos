@@ -2,7 +2,6 @@ package metrovias;
 
 import org.junit.Assert;
 import util.IsEmptyException;
-import util.StaticStack;
 
 public class MainTest {
     public static void main(String[] args) {
